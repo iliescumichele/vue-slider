@@ -35,6 +35,8 @@ const app = new Vue({
         ],
 
         curentSlideIndex: 0,
+        isOver: false,
+        autoScroll: null,
     },
 
 
@@ -52,8 +54,36 @@ const app = new Vue({
             if(this.curentSlideIndex < 0){
                 this.curentSlideIndex = this.slides.length - 1;
             }
+        },
+
+        changeSlide(index){
+            this.curentSlideIndex = index;
+        },
+
+
+        
+        /*
+        Aggiunta del bonus, metodo visto durante la correzione
+        */
+        mouseOver(){
+            console.log('SONO SOPRA');
+             clearInterval(this.autoScroll);
+             this.autoScroll = null;
+        },
+        
+        mouseOut(){
+            console.log('SONO FUORI');
+            this.startAutoscroll();
+        },
+
+        startAutoscroll(){
+            this.autoScroll = setInterval(()=>{
+                this.nextSlide()
+            }, 1500);
         }
+    }, 
+
+    mounted() {
+        this.startAutoscroll();
     }
 });
-
-console.log(slides);
