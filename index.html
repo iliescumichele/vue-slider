@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="css/style.css"/>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Slider</title>
+
+
+    <style>
+        .thumb img:hover{
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,8 +36,16 @@
                 <div class="thumbs" >
                     <div @click="prevSlide()" class="prev"></div>
                     <div @click="nextSlide()" class="next"></div>
-                    <div class="thumb" v-for="(slide, index) in slides">
-                        <img :src="slide.image" :alt="slide.title">
+
+                    <!-- :class è una classe dinamica, se l'index corrisponde all'index della slide grande allora si aggiunge la classe active alla slide picola-->
+                    <div v-for="(slide, index) in slides"
+                        class="thumb"
+                        :class= "{'active' : index === curentSlideIndex}"
+                        >
+                          <img
+                          :src="slide.image"
+                          :alt="slide.title"
+                          @click="curentSlideIndex = index">
                 </div>
 
 
