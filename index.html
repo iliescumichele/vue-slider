@@ -17,35 +17,22 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <div class="item">
-                    <img src="img/01.jpg" alt="Svezia" />
+                    <img :src="slides[curentSlideIndex].image" alt="slides[curentSlideIndex].title" />
                     <div class="text">
-                        <h3>Svezia</h3>
+                        <h3>{{slides[curentSlideIndex].title}}</h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut
-                            veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.
+                            {{slides[curentSlideIndex].text}}
                         </p>
                     </div>
                 </div>
 
-                <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
-                    <div class="thumb active">
-                        <img src="img/01.jpg" alt="Svezia"/>
-                    </div>
-                    <div class="thumb">
-                        <img src="img/02.jpg" alt="Svizzera" />
-                    </div>
-                    <div class="thumb">
-                        <img src="img/03.jpg" alt="Gran Bretagna" />
-                    </div>
-                    <div class="thumb">
-                        <img src="img/04.jpg" alt="Germania" />
-                    </div>
-                    <div class="thumb">
-                        <img src="img/05.jpg" alt="Paradise" />
-                    </div>
+                <div class="thumbs" >
+                    <div @click="prevSlide()" class="prev"></div>
+                    <div @click="nextSlide()" class="next"></div>
+                    <div class="thumb" v-for="slide in slides">
+                        <img :src="slide.image" alt="slide.title">
                 </div>
+
 
             </div>
         </div>

@@ -32,18 +32,26 @@ const app = new Vue({
                 title: 'Paradise',
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
             }
-        ]
+        ],
+
+        curentSlideIndex: 0,
     },
 
 
     methods: {
-        nextPhoto(){
-
+        nextSlide(){
+            this.curentSlideIndex++;
+            if(this.curentSlideIndex > (this.slides.length - 1)){
+                this.curentSlideIndex = 0;
+            }
         },
 
 
-        prevPhoto(){
-
+        prevSlide(){
+            this.curentSlideIndex--;
+            if(this.curentSlideIndex < 0){
+                this.curentSlideIndex = this.slides.length - 1;
+            }
         }
     }
 });
